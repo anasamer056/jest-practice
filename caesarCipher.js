@@ -2,20 +2,27 @@ export default class CaesarCipher {
   encrypt(str, shift) {
     let res = "";
     for (let char of str) {
-      res += this.#shiftChar(char, shift);
+      if (/[A-Z]/.test(char)) {
+        char = this.#incrementChar(char, "A".charCodeAt(0), shift);
+      } else if (/[a-z]/.test(char)) {
+        char = this.#incrementChar(char, "a".charCodeAt(0), shift);
+      } 
+      res += char;
     }
     return res;
   }
-  #shiftChar(char, shift) {
-    if (/[A-Z]/.test(char)) {
-      let code = char.charCodeAt(0) - 65 + shift;
-      code %= 26;
-      return String.fromCharCode(code + 65);
-    } else if (/[a-z]/.test(char)) {
-      let code = char.charCodeAt(0) - 97 + shift;
-      code %= 26;
-      return String.fromCharCode(code + 97);
-    } else return char;
+  decrypt(str, shift){
+    
+  }
+  #incrementChar(char, start, shift) {
+    let code = char.charCodeAt(0) - start + shift;
+    code %= 26;
+    return String.fromCharCode(code + start);
+  }
+  #decrementChar(char, start, shift) {
+    let code = char.charCodeAt(0) - start - shift;
+    code %= 26;
+    return String.fromCharCode(code + start);
   }
 }
 
