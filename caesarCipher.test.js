@@ -68,6 +68,11 @@ describe("encrypt", () => {
       output: "",
       shift: -50,
     },
+    {
+        input: "word",
+        output: "word",
+        shift: 0,
+      },
   ];
   data.forEach((item) => {
     test(`${item.input} to ${item.output} by ${item.shift}`, () => {
@@ -153,6 +158,11 @@ describe("decrypt", () => {
       output: "",
       shift: -50,
     },
+    {
+        input: "word",
+        output: "word",
+        shift: 0,
+      },
   ];
   data.forEach((item) => {
     test(`${item.input} to ${item.output} by ${item.shift}`, () => {
