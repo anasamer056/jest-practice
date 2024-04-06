@@ -7,6 +7,7 @@ describe("encrypt", () => {
       output: "zrug",
       shift: 3,
     },
+
     {
       input: "WORD",
       output: "ZRUG",
@@ -19,8 +20,8 @@ describe("encrypt", () => {
     },
     {
       input: "WORD",
-      output: "UMPB",
-      shift: 50,
+      output: "YQTF",
+      shift: -50,
     },
     {
       input: "word!",
@@ -33,17 +34,47 @@ describe("encrypt", () => {
       shift: 50,
     },
     {
+      input: "1word!",
+      output: "1yqtf!",
+      shift: -50,
+    },
+    {
       input: "WoRd",
       output: "UmPb",
       shift: 50,
     },
+    {
+      input: "WoRd",
+      output: "YqTf",
+      shift: -50,
+    },
+    {
+      input: "word",
+      output: "tloa",
+      shift: -3,
+    },
+    {
+      input: "word",
+      output: "yqtf",
+      shift: -50,
+    },
+    {
+      input: "!@#$%^&*()",
+      output: "!@#$%^&*()",
+      shift: -50,
+    },
+    {
+      input: "",
+      output: "",
+      shift: -50,
+    },
   ];
   data.forEach((item) => {
-    test(`${item.input} to ${item.output} by ${item.shift}`, ()=>{
-        expect(new CaesarCipher().encrypt(item.input, item.shift)).toEqual(
-            item.output
-          );
-    })
+    test(`${item.input} to ${item.output} by ${item.shift}`, () => {
+      expect(new CaesarCipher().encrypt(item.input, item.shift)).toEqual(
+        item.output
+      );
+    });
   });
 });
 
@@ -84,6 +115,8 @@ describe("decrypt", () => {
       output: "WoRd",
       shift: 50,
     },
+    
+
   ];
   data.forEach((item) => {
     test(`${item.input} to ${item.output} by ${item.shift}`, () => {
