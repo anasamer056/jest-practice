@@ -11,9 +11,22 @@ export default class CaesarCipher {
     }
     return res;
   }
+
+
   decrypt(str, shift){
-    
+    let res = "";
+    for (let char of str) {
+      if (/[A-Z]/.test(char)) {
+        char = this.#decrementChar(char, "Z".charCodeAt(0), shift);
+      } else if (/[a-z]/.test(char)) {
+        char = this.#decrementChar(char, "z".charCodeAt(0), shift);
+      } 
+      res += char;
+    }
+    return res;
   }
+
+
   #incrementChar(char, start, shift) {
     let code = char.charCodeAt(0) - start + shift;
     code %= 26;
@@ -22,8 +35,8 @@ export default class CaesarCipher {
   #decrementChar(char, start, shift) {
     let code = char.charCodeAt(0) - start - shift;
     code %= 26;
-    return String.fromCharCode(code + start);
+    code = Math.abs(code);
+    return String.fromCharCode(start - code);
   }
 }
 
-// console.log()
