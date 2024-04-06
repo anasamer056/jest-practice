@@ -115,8 +115,44 @@ describe("decrypt", () => {
       output: "WoRd",
       shift: 50,
     },
-    
+    {
+      input: "YQTF",
+      output: "WORD",
+      shift: -50,
+    },
 
+    {
+      input: "1yqtf!",
+      output: "1word!",
+      shift: -50,
+    },
+
+    {
+      input: "YqTf",
+      output: "WoRd",
+      shift: -50,
+    },
+
+    {
+      input: "tloa",
+      output: "word",
+      shift: -3,
+    },
+    {
+      input: "yqtf",
+      output: "word",
+      shift: -50,
+    },
+    {
+      input: "!@#$%^&*()",
+      output: "!@#$%^&*()",
+      shift: -50,
+    },
+    {
+      input: "",
+      output: "",
+      shift: -50,
+    },
   ];
   data.forEach((item) => {
     test(`${item.input} to ${item.output} by ${item.shift}`, () => {

@@ -24,9 +24,17 @@ export default class CaesarCipher {
     let res = "";
     for (let char of str) {
       if (/[A-Z]/.test(char)) {
-        char = this.#decrementChar(char, "Z".charCodeAt(0), shift);
+        if (shift > 0) {
+            char = this.#decrementChar(char, "Z".charCodeAt(0), shift);
+          } else {
+            char = this.#incrementChar(char, "A".charCodeAt(0), -shift);
+          } 
       } else if (/[a-z]/.test(char)) {
-        char = this.#decrementChar(char, "z".charCodeAt(0), shift);
+        if (shift > 0) {
+            char = this.#decrementChar(char, "z".charCodeAt(0), shift);
+          } else {
+            char = this.#incrementChar(char, "a".charCodeAt(0), -shift);
+          }
       }
       res += char;
     }
